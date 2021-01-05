@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block title %}Kirjaudu{% endblock %}
+{% block content %}
+<h1>Kirjaudu</h1>
+<form method="POST">
+{{form.csrf_token}}  
+<p>{{form.kilpailu.label}}{{form.kilpailu}}</p>
+<p>{{form.tunnus.label}}{{form.tunnus}}
+    {% for error in form.tunnus.errors %}
+    <span style="color: red;">{{error}}</span>
+    {% endfor %}
+</p>
+
+<p>{{form.password.label}}{{form.password}}
+    {% for error in form.password.errors %}
+    <span style="color: red;">{{error}}</span>
+    {% endfor %}
+</p>
+
+<p>
+{{form.submit}}
+</p>
+</form>
+{% endblock %}

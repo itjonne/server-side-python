@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+{% block title %}Joukkuelistaus{% endblock %}
+{% block header %}
+<nav>
+    <span>{{kilpailu_nimi}}</span>
+    <a href="muokkaa">{{joukkue_nimi}}</a>
+    <a href="joukkuelistaus">Joukkuelistaus</a>
+    <a href="logout">Kirjaudu ulos</a>
+  </nav> 
+{% endblock %}
+{% block content %}
+<h1>Joukkuelistaus</h1>
+<ul>
+    {% for sarja in sarjat|sort(attribute='nimi') %}
+        <li>{{sarja['nimi']}}
+        <ul>
+            {% for joukkue in sarja['joukkueet']|sort(attribute='nimi') %}
+                <li>{{joukkue['nimi']}}
+                    {% if 'jasenet' in joukkue %}
+                    <ul>
+                        {% for jasen in joukkue['jasenet']|sort() %}
+                        <li>{{jasen}}</li>
+                        {% endfor %}
+                    </ul>
+                    {% endif %}
+                </li>    
+            {% endfor %}    
+        </ul>
+        </li>
+    {% endfor %}
+</ul>
+{% endblock %}

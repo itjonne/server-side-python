@@ -1,0 +1,5 @@
+1) jos data ei aukee, ilmota virhe
+
+2) Tyhjät merkkijonot pois
+
+3) flask-wtf äyttöön. http://appro.mit.jyu.fi/tiea2080/ohjaus/ohjaus3/#wtf

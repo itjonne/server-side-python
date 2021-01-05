@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% block title %}Muokkaa{% endblock %}
+{% block header %}
+<nav>
+  <span>Admin</span>
+  <a href="{{url_for('admin_kilpailut')}}">Kilpailut</a>
+  <a href="{{url_for('admin_logout')}}">Kirjaudu ulos</a>
+  </nav> 
+{% endblock %}
+{% block content %}
+<h1>Joukkueet</h1>
+{% for joukkue in joukkueet %}
+<p><a href="{{url_for('admin_muokkaa', joukkue_nimi=joukkue['nimi'])}}">{{joukkue['nimi']}}</a></p>
+{% endfor %}
+<h2>Lisää uusi joukkue</h2>
+<form action="" method="POST">
+{{form.csrf_token}}  
+<p>{{form.sarjat.label}}{{form.sarjat}}</p>
+<p>{{form.tunnus.label}}{{form.tunnus}}
+{% if virhe_tunnus %}
+<span style="color: red;">{{virhe_tunnus}}</span>
+{% endif %}
+</p>
+{% for i in range(5) %}
+{% if jasenet %}
+{% if jasenet[i] %}
+<p>{{form["jasenet-" + i | string].label }}{{form["jasenet-" + i | string](value=jasenet[i])}}</p>
+{% else %}
+<p>{{form["jasenet-" + i | string].label }}{{form["jasenet-" + i | string]}}</p>
+{% endif %}
+{% else %}
+<p>{{form["jasenet-" + i | string].label }}{{form["jasenet-" + i | string]}}</p>
+{% endif %}
+{% endfor %}
+{% if virhe_jasen %}
+<p style="color: red;">{{virhe_jasen}}</p>
+{% endif %}
+{{form.submit}}
+</p>
+</form>
+{% endblock %} 

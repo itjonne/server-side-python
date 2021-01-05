@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+{% block title %}Muokkaa{% endblock %}
+{% block header %}
+<nav>
+    <span>Admin</span>
+    <a href="{{url_for('admin_logout')}}">Kirjaudu ulos</a>
+</nav> 
+{% endblock %}
+{% block content %}
+<h1>Kilpailut</h1>
+{% for kilpailu in kilpailut %}
+  <p><a href="{{url_for('admin_sarjat', kilpailu_nimi=kilpailu['nimi'])}}">{{kilpailu['nimi']}}</a></p>
+{% endfor %}  
+{% endblock %} 

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+<link rel="StyleSheet" href="tyylit.css" type="text/css" />
+<title>Peli</title>
+</head>
+<body>
+
+<h1>Peli</h1>
+
+<p>Kerro luotavan pelialueen koko. Ruudukko on yhtä monta ruutua
+leveä kuin korkea. </p>
+
+<form class="form" action="vt2.cgi" method="get">
+<fieldset>
+<p><label>Koko <input type="text" name="x" /></label>
+    {% if virhe %}
+        <span style="color: red;">{{virhe}}</span>
+    {% endif %}
+</p>
+<p><label>Teksti <input type="text" name="teksti" required/></label></p>
+</fieldset>
+<p><input type="submit" value="Luo" /></p>
+</form>
+
+{% if koko > 0  and not virhe %}
+<table>
+    {% for rivi in range(koko) %}
+    {% if rivi % 2 == 0 %}
+    <tr>
+        {% for solu in range(koko) %}
+        {% if solu == rivi %}
+        <td class="{{ loop.cycle('parillinen pallo', 'pariton pallo')}}"></td>
+        {% else %}
+        <td class="{{ loop.cycle('parillinen', 'pariton')}}"></td>
+        {% endif %}
+        {% endfor %} 
+    </tr>
+    {% else %}
+    <tr>
+        {% for solu in range(koko) %}
+        {% if solu == rivi %}
+        <td class="{{ loop.cycle('pariton pallo', 'parillinen pallo') }}"></td>
+        {% else %}
+        <td class="{{ loop.cycle('pariton', 'parillinen')}}"></td>
+        {% endif %} 
+        {% endfor %}    
+    </tr>
+    {% endif %}
+    {% endfor %}
+</table>
+<p>{{teksti}}</p>
+{% endif %}
+
+
+</body>
+</html>

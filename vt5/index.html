@@ -1,0 +1,55 @@
+<!doctype html>
+
+<html lang='fi'>
+<head>
+  <meta charset="utf-8">
+  <title>VT5 - AJAX</title>
+  <link rel="stylesheet" href="index.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+</head>
+<body>
+<nav>
+    <a>Jäärogaining</a> |
+    <a id="muokkaaLink" href="">Joukkueen nimi</a> |
+    <a id="joukkuelistausLink" href="">Joukkuelistaus</a> |
+    <a id="logoutLink" href="">Logout</a> |
+  </nav>
+  <div id="joukkuelistaus">
+    <h1>Joukkuelistaus</h1>
+  </div>
+  <div id="muokkaa">
+     <h1>Muokkaa</h1>
+     <form method="POST" id="form">
+        <input type="hidden" name="id" id="input_id">
+        <fieldset>
+            <legend>Anna joukkueen nimi:</legend>
+            <label>Joukkueen nimi: <input type="text" name="joukkue_nimi" id="joukkue_input" required></label><span id="joukkue_nimi_virhe"></span>
+        </fieldset> 
+         <fieldset>
+             <legend>Valitse sarja:</legend><span id="joukkue_sarja_virhe"></span>
+             <div id="sarja_input">
+                <input type="radio" id="2h" name="sarja" value="2 h" checked />
+                <label for="2h">2h</label>
+                <input type="radio" id="4h" name="sarja" value="4 h" />
+                <label for="4h">4h</label>
+                <input type="radio" id="8h" name="sarja" value="8 h" />
+                <label for="8h">8h</label>               
+            </div>
+         </fieldset>        
+        <fieldset>
+            <legend>Anna joukkueen jäsenet:</legend><span id="joukkue_jasenet_virhe"></span>
+            <p><label>Jäsen 1: <input type="text" name="jasen-0" id="jasen-0"></label></p>
+            <p><label>Jäsen 2: <input type="text" name="jasen-1" id="jasen-1"></label></p>
+            <p><label>Jäsen 3: <input type="text" name="jasen-2" id="jasen-2"></label></p>
+            <p><label>Jäsen 4: <input type="text" name="jasen-3" id="jasen-3"></label></p>
+            <p><label>Jäsen 5: <input type="text" name="jasen-4" id="jasen-4"></label></p>
+        </fieldset>
+     <button id="submit_button">Tallenna</button><span id="submit_virhe"></span>       
+     </form> 
+  </div>
+  <div id="logout">
+      <h1>Logout</h1>
+  </div>
+  <script src="index.js"></script>
+</body>
+</html>

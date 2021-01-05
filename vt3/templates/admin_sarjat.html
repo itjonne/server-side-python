@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block title %}Muokkaa{% endblock %}
+{% block header %}
+<nav>
+  <span>Admin</span>
+  <a href="{{url_for('admin_kilpailut')}}">Kilpailut</a>
+  <a href="{{url_for('admin_logout')}}">Kirjaudu ulos</a>
+  </nav> 
+{% endblock %}
+{% block content %}
+<h1>Sarjat</h1>
+{% if sarjat %}
+<ul>
+{% for sarja in sarjat %}
+  <li><a href="{{url_for('admin_joukkuelistaus', sarja_nimi=sarja['nimi'])}}">{{sarja['nimi']}}</a></li>
+{% endfor %}
+</ul>
+{% else %}
+<p>Kilpailussa ei ole näytettäviä sarjoja</p>
+{% endif %}  
+<p>{{kilpailut}}</p>
+{% endblock %} 

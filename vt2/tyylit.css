@@ -1,0 +1,22 @@
+td {
+    width: 64px;
+    height: 64px;
+}
+
+table {
+    border: solid;
+    border-spacing: 0;
+}
+
+.pariton {
+    background-color: black;
+}
+
+td img{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50px;
+    height: 50px;
+
+}

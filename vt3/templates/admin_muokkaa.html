@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+{% block title %}Muokkaa{% endblock %}
+{% block header %}
+<nav>
+  <span>Admin</span>
+  <a href="{{url_for('admin_kilpailut')}}">Kilpailut</a>
+  <a href="{{url_for('admin_logout')}}">Kirjaudu ulos</a>
+  </nav> 
+{% endblock %}
+{% block content %}
+<h1>Muokkaa Joukkuetta</h1>
+<form method="POST">
+{{form.csrf_token}}  
+<p>Sarjat: {{form.sarjat}}
+<p>{{form.tunnus.label}}{{form.tunnus}}
+  {% if virhe_tunnus %}
+  <span style="color: red;">{{virhe_tunnus}}</span>
+  {% endif %}
+</p>
+{% for i in range(5) %}
+{% if jasenet[i] %}
+<p>{{form["jasenet-" + i | string].label }}{{form["jasenet-" + i | string](value=jasenet[i])}}</p>
+{% else %}
+<p>{{form["jasenet-" + i | string].label }}{{form["jasenet-" + i | string]}}</p>
+{% endif %}
+{% endfor %}
+{% if virhe_jasen %}
+<p style="color: red;">{{virhe_jasen}}</p>
+{% endif %}
+<p>{{form.poista.label}}{{form.poista}}</p>
+{% if virhe_rastit %}
+<p style="color: red;">{{virhe_rastit}}</p>
+{% endif %}
+{{form.submit}}
+</form>{% endblock %} 

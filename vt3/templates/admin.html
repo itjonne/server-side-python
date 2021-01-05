@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block title %}Kirjaudu{% endblock %}
+{% block content %}
+<h1>Kirjaudu admin</h1>
+<form method="POST">
+{{form.csrf_token}}  
+<p>{{form.salasana.label}}{{form.salasana}}
+    {% if virhe %}
+    <span style="color: red;">{{virhe}}</span>
+    {% endif %}
+</p>    
+<p>
+{{form.submit}}
+</p>
+</form>
+{% endblock %} 

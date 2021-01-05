@@ -1,0 +1,22 @@
+{% extends "layout.html" %}
+{% block title %}Kirjaudu{% endblock %}
+{% block content %}
+<h1>Kirjaudu</h1>
+<form method="POST">
+<p>{{form.kilpailu.label}}{{form.kilpailu}}</p>
+<p>{{form.tunnus.label}}{{form.tunnus}}
+    {% if not tunnus_oikein %}
+    <span>Kirjautuminen epäonnistui. Joukkuetta ei löydy kilpailusta</span>
+    {% endif %}
+</p>
+
+<p>{{form.password.label}}{{form.password}}
+    {% if not salasana_oikein and tunnus_oikein %}
+    <span>Kirjautuminen epäonnistui. Salasana väärin</span>
+    {% endif %}
+</p>
+<p>
+<input type="submit" name="kirjaudu" value="kirjaudu" />
+</p>
+</form>
+{% endblock %}

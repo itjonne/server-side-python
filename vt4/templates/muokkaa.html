@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+{% block title %}Muokkaa{% endblock %}
+{% block header %}
+<nav>
+    <span>{{kilpailu_nimi}}</span>
+    <a href="muokkaa">{{joukkue_nimi}}</a>
+    <a href="joukkuelistaus">Joukkuelistaus</a>
+    <a href="logout">Kirjaudu ulos</a>
+  </nav> 
+{% endblock %}
+{% block content %}
+<h1>Muokkaa Joukkuetta</h1>
+<form method="POST">
+<p>Sarjat: {{form.sarjat}}
+<p>{{form.tunnus.label}}{{form.tunnus}}
+  {% if virhe_tunnus %}
+  <span>{{virhe_tunnus}}</span>
+  {% endif %}
+</p>
+<p>Jäsenet: {{form.jasenet}}
+  {% if virhe_jasen %}
+  <span>{{virhe_jasen}}</span>
+  {% endif %}
+<input type="submit" name="muokkaa" value="Muokkaa" />
+</form>{% endblock %}
